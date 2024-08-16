@@ -1,15 +1,45 @@
 /* eslint-disable no-unused-vars */
-import './Home.css'
-import {Link} from 'react-router-dom'
+import { useEffect } from "react";
+import "./Home.css";
+import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
 const Home = () => {
-  return (
-    <div className='Home'>
-      <h1>Welcome to the Home Page</h1>
-      <h1>This is the Home Page</h1>
-      <Link to={'/login'} className='login' style={{textDecoration: "none"}}>Go to Login</Link>
-      <Link to={'/register'} style={{textDecoration: "none", margin:"10px"}} className='register'>Go to Register Page</Link>
-    </div>
-  )
-}
+  const navigate = useNavigate();
+  const token = JSON.parse(localStorage.getItem("user_data"))?.token;
 
-export default Home
+  const logOut = () => {
+    localStorage.removeItem("user_data");
+    navigate('/');
+    toast.info("You have successfully logged out!");
+  };
+
+  useEffect(() => {
+    if (token) {
+      navigate("/home");
+    } else {
+      navigate("/");
+    }
+  }, []);
+
+  return (
+    <div className="Home">
+      <h1 className="Home__header">Welcome to the Home Page</h1>
+      <h1 className="Home__info">This is the Home Page</h1>
+      <Link to={"/login"} className="login" style={{ textDecoration: "none" }}>
+        Go to Login
+      </Link>
+      <Link
+        to={"/register"}
+        style={{ textDecoration: "none", margin: "10px" }}
+        className="register"
+      >
+        Go to Register Page
+      </Link>
+      <button onClick={logOut} className="Home__btn">
+        Log Out
+      </button>
+    </div>
+  );
+};
+
+export default Home;

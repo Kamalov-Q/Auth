@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Login.css";
+import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -8,12 +9,12 @@ const Login = () => {
   const userData = JSON.parse(localStorage.getItem("user_data"));
   const login = (e) => {
     e?.preventDefault();
-    console.log("Email", userData?.email);
-    console.log("Password", userData?.password);
-    if(email == userData?.email && password == userData?.password) {
-      navigate('/');
-    }else {
-      alert('Wrong email or password? Try Again!')
+    if (email == userData?.email && password == userData?.password) {
+      toast?.success("Successfully Logged In!")
+      navigate("/home");
+      //Navigating to the Home Page
+    } else {
+      toast.error("Wrong email or password? Try Again!");
     }
   };
 
@@ -46,7 +47,7 @@ const Login = () => {
         </button>
         <div className="inputInfo">
           <div>Do not have an account? </div>
-          <Link to={`/register`} className="Login__span">
+          <Link to={`/register`} style={{textDecoration: "none"}} className="Login__span">
             Register
           </Link>
         </div>
