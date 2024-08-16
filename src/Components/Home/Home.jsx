@@ -25,7 +25,7 @@ const Home = () => {
     <div className="Home">
       <h1 className="Home__header">Welcome to the Home Page</h1>
       <h1 className="Home__info">This is the Home Page</h1>
-      <Link to={"/login"} className="login" style={{ textDecoration: "none" }}>
+      <Link to={"/"} className="login" style={{ textDecoration: "none" }}>
         Go to Login
       </Link>
       <Link
