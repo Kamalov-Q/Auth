@@ -9,9 +9,13 @@
     font-size: 30px;
 }
 .Home .Home__header {
-    font-size: 35px;
+    font-size: 5rem;
     font-weight: 700;
     color: green;
+}
+.Home .Home__info {
+    color: indigo;
+    font-size: 3rem;
 }
 .Home .Home__btn {
     padding: 5px 10px;
