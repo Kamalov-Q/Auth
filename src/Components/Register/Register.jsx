@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import "./Register.css";
 import { toast } from "react-toastify";

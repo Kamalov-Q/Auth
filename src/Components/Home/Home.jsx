@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
-import { useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
 import "./Home.css";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 const Home = () => {
+  const [data, setData] = useState([]);
   const navigate = useNavigate();
   const token = JSON.parse(localStorage.getItem("user_data"))?.token;
 
@@ -13,12 +15,24 @@ const Home = () => {
     toast.info("You have successfully logged out!");
   };
 
+  const getData = () => {
+    fetch('https://dummyjson.com/comments', {
+      method: "GET"
+    })
+    .then((resp) => resp.json())
+    .then((data) => {
+      console.log(data);
+    })
+  }
+
   useEffect(() => {
+    getData();
     if (token) {
       navigate("/home");
     } else {
       navigate("/");
     }
+
   }, []);
 
   return (
@@ -35,6 +49,14 @@ const Home = () => {
       >
         Go to Register Page
       </Link>
+     {/*  {
+        data && data?.map((user, idx) => (
+          <div key={idx}>
+            <div>{user?.userAgent}</div>
+            <br />
+          </div>
+        ))
+      } */}
       <button onClick={logOut} className="Home__btn">
         Log Out
       </button>

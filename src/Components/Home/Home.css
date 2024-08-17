@@ -9,7 +9,8 @@
     font-size: 30px;
 }
 .Home .Home__header {
-    font-size: 5rem;
+    font-size: 2.5rem;
+    text-align: center;
     font-weight: 700;
     color: green;
 }
