@@ -8,15 +8,17 @@ const Home = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   const token = JSON.parse(localStorage.getItem("user_data"))?.token;
+  const user = JSON.parse(localStorage.getItem("access_token"))?.user;
 
   const logOut = () => {
     localStorage.removeItem("user_data");
     navigate('/');
-    toast.info("You have successfully logged out!");
+    toast?.info("You have successfully logged out!");
   };
 
   const getData = () => {
-    fetch('https://dummyjson.com/comments', {
+    // fetch('https://dummyjson.com/comments', {
+    fetch('https://jsonplaceholder.typicode.com/comments', {
       method: "GET"
     })
     .then((resp) => resp.json())

@@ -9,19 +9,23 @@ const Register = () => {
     password: "",
     token: "access_token",
   });
-
   const navigate = useNavigate();
   const namePattern = /^[A-Za-z]+(?: [A-Za-z]+)*$/;
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   /* const passwordPattern =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$/; */
   const handleRegister = (e) => {
-    if (!namePattern.test(data?.name) || !emailPattern.test(data?.email) || data?.password.length < 8) {
+    if (
+      !namePattern.test(data?.name) ||
+      !emailPattern.test(data?.email) ||
+      data?.password.length < 8
+    ) {
       navigate("/register");
       alert("Invalid");
-    } else {
+    } 
+    else {
       e?.preventDefault();
-      toast.success("Successfully Registered");
+      toast?.success("Successfully Registered");
       localStorage.setItem("user_data", JSON.stringify(data));
       navigate("/");
     }
