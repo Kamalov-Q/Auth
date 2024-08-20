@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import './App.css'
 import Home from './Components/Home/Home'
 import Login from './Components/Login/Login'

@@ -1,14 +1,17 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import "./Home.css";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 const Home = () => {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const navigate = useNavigate();
-  const token = JSON.parse(localStorage.getItem("user_data"))?.token;
-  const user = JSON.parse(localStorage.getItem("access_token"))?.user;
+  const token = JSON.parse(localStorage.getItem("user_data")).token;
+  const user = JSON.parse(localStorage.getItem("user_data"))?.name;
+  console.log(user);
+  
+  
 
   const logOut = () => {
     localStorage.removeItem("user_data");
@@ -16,7 +19,7 @@ const Home = () => {
     toast?.info("You have successfully logged out!");
   };
 
-  const getData = () => {
+  /* const getData = () => {
     // fetch('https://dummyjson.com/comments', {
     fetch('https://jsonplaceholder.typicode.com/comments', {
       method: "GET"
@@ -25,10 +28,10 @@ const Home = () => {
     .then((data) => {
       console.log(data);
     })
-  }
+  } */
 
   useEffect(() => {
-    getData();
+    // getData();
     if (token) {
       navigate("/home");
     } else {
@@ -39,7 +42,7 @@ const Home = () => {
 
   return (
     <div className="Home">
-      <div className="Home__header">Welcome to the Home Page</div>
+      <div className="Home__header">Welcome <span style={{fontWeight: "bolder", color: "blue"}}>{user}</span></div>
       <div className="Home__info">This is the Home Page</div>
       <Link to={"/"} className="login" style={{ textDecoration: "none" }}>
         Go to Login
