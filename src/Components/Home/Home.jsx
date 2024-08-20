@@ -40,6 +40,7 @@ const Home = () => {
 
   }, []);
 
+
   return (
     <div className="Home">
       <div className="Home__header">Welcome <span style={{fontWeight: "bolder", color: "blue"}}>{user}</span></div>
