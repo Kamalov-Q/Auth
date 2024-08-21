@@ -9,13 +9,10 @@ const Home = () => {
   const navigate = useNavigate();
   const token = JSON.parse(localStorage.getItem("user_data")).token;
   const user = JSON.parse(localStorage.getItem("user_data"))?.name;
-  console.log(user);
-  
-  
 
   const logOut = () => {
     localStorage.removeItem("user_data");
-    navigate('/');
+    navigate("/");
     toast?.info("You have successfully logged out!");
   };
 
@@ -37,13 +34,14 @@ const Home = () => {
     } else {
       navigate("/");
     }
-
   }, []);
-
 
   return (
     <div className="Home">
-      <div className="Home__header">Welcome <span style={{fontWeight: "bolder", color: "blue"}}>{user}</span></div>
+      <div className="Home__header">
+        Welcome{" "}
+        <span style={{ fontWeight: "bolder", color: "blue" }}>{user}</span>
+      </div>
       <div className="Home__info">This is the Home Page</div>
       <Link to={"/"} className="login" style={{ textDecoration: "none" }}>
         Go to Login
@@ -55,7 +53,7 @@ const Home = () => {
       >
         Go to Register Page
       </Link>
-     {/*  {
+      {/*  {
         data && data?.map((user, idx) => (
           <div key={idx}>
             <div>{user?.userAgent}</div>
